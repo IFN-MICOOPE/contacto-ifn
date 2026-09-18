@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto | Inteligencia Financiera y de Negocios - IFN</title>
+  <style>
+    :root{
+      --azul:#044372;
+      --azul-oscuro:#032f50;
+      --azul-claro:#eaf3f8;
+      --verde:#3dae2b;
+      --verde-suave:#eef8eb;
+      --gris:#333333;
+      --gris-medio:#6b7280;
+      --gris-claro:#f5f7f9;
+      --blanco:#ffffff;
+      --borde:#dbe3e8;
+      --sombra:0 14px 35px rgba(4,67,114,.12);
+    }
+
+    *{box-sizing:border-box;}
+
+    body{
+      margin:0;
+      font-family:"Segoe UI", Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(61,174,43,.08), transparent 24%),
+        linear-gradient(135deg,#f7fafc 0%,#eef4f8 100%);
+      color:var(--gris);
+    }
+
+    .page{
+      max-width:1180px;
+      margin:0 auto;
+      padding:34px 22px 48px;
+    }
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      border-radius:24px;
+      background:linear-gradient(135deg,var(--azul) 0%,#075a91 100%);
+      color:white;
+      padding:34px 38px;
+      box-shadow:var(--sombra);
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      background:rgba(61,174,43,.22);
+      right:-70px;
+      top:-80px;
+    }
+
+    .hero-top{
+      display:flex;
+      justify-content:space-between;
+      gap:24px;
+      align-items:center;
+      position:relative;
+      z-index:2;
+    }
+
+    .logos{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .logo-box{
+      height:100px;
+      min-width:150px;
+      padding:8px 14px;
+      border:1px solid rgba(255,255,255,.30);
+      border-radius:14px;
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      backdrop-filter:blur(8px);
+    }
+
+    .logo-box img{
+      max-height:85px;
+      max-width:160px;
+      object-fit:contain;
+    }
+
+    .logo-fallback{
+      font-weight:700;
+      letter-spacing:.5px;
+      font-size:15px;
+      opacity:.95;
+    }
+
+    .hero h1{
+      margin:28px 0 8px;
+      font-size:clamp(28px,4vw,44px);
+      line-height:1.08;
+      position:relative;
+      z-index:2;
+    }
+
+    .hero p{
+      margin:0;
+      max-width:760px;
+      color:rgba(255,255,255,.88);
+      font-size:17px;
+      line-height:1.55;
+      position:relative;
+      z-index:2;
+    }
+
+    .general-contact{
+      margin-top:26px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+      padding:18px 20px;
+      background:white;
+      border-radius:18px;
+      color:var(--gris);
+      position:relative;
+      z-index:2;
+      max-width:760px;
+    }
+
+    .general-icon{
+      width:46px;
+      height:46px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      background:var(--verde-suave);
+      color:var(--verde);
+      font-size:23px;
+      flex:0 0 auto;
+    }
+
+    .general-contact small{
+      display:block;
+      color:var(--gris-medio);
+      margin-bottom:3px;
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:.6px;
+      font-size:11px;
+    }
+
+    .general-contact a{
+      color:var(--azul);
+      font-weight:700;
+      font-size:17px;
+      text-decoration:none;
+      word-break:break-word;
+    }
+
+    .section-title{
+      margin:34px 0 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .section-title h2{
+      margin:0;
+      color:var(--azul);
+      font-size:24px;
+    }
+
+    .section-title span{
+      color:var(--gris-medio);
+      font-size:14px;
+    }
+
+    .team-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:18px;
+    }
+
+    .card{
+      background:white;
+      border:1px solid var(--borde);
+      border-radius:18px;
+      padding:22px;
+      display:flex;
+      gap:16px;
+      align-items:flex-start;
+      box-shadow:0 8px 22px rgba(0,0,0,.04);
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-3px);
+      box-shadow:0 14px 28px rgba(4,67,114,.10);
+      border-color:rgba(4,67,114,.22);
+    }
+
+    .avatar{
+      width:54px;
+      height:54px;
+      border-radius:15px;
+      background:linear-gradient(135deg,var(--azul),#0a689d);
+      color:white;
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      font-size:19px;
+      flex:0 0 auto;
+      box-shadow:inset 0 0 0 3px rgba(255,255,255,.14);
+    }
+
+    .card:nth-child(even) .avatar,
+    .card:last-child .avatar{
+      background:linear-gradient(135deg,var(--verde),#2f8f24);
+    }
+
+    .info h3{
+      margin:1px 0 4px;
+      color:var(--gris);
+      font-size:18px;
+    }
+
+    .role{
+      color:var(--azul);
+      font-size:14px;
+      font-weight:600;
+      line-height:1.35;
+      margin-bottom:13px;
+    }
+
+    .email{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:var(--gris);
+      text-decoration:none;
+      font-size:14px;
+      padding:8px 11px;
+      border-radius:10px;
+      background:var(--gris-claro);
+      transition:background .18s ease, color .18s ease;
+      word-break:break-all;
+    }
+
+    .email:hover{
+      background:var(--azul-claro);
+      color:var(--azul);
+    }
+
+    .footer{
+      margin-top:28px;
+      padding:18px 4px 0;
+      color:var(--gris-medio);
+      font-size:13px;
+      line-height:1.5;
+      border-top:1px solid var(--borde);
+    }
+
+    .footer strong{color:var(--azul);}
+
+    @media(max-width:800px){
+      .team-grid{grid-template-columns:1fr;}
+      .hero{padding:28px 22px;}
+      .hero-top{align-items:flex-start; flex-direction:column;}
+      .section-title{align-items:flex-start; flex-direction:column;}
+    }
+
+    @media(max-width:500px){
+      .page{padding:18px 12px 28px;}
+      .hero{border-radius:18px;}
+      .card{padding:18px;}
+      .logo-box{min-width:130px;height:56px;}
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="hero-top">
+        <div class="logos">
+          <div class="logo-box">
+            <img src="logo-micoope.png" alt="Logo MICOOPE"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+            <span class="logo-fallback" style="display:none;">MICOOPE</span>
+          </div>
+          <div class="logo-box">
+            <img src="logo-ifn.png" alt="Logo IFN"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+            <span class="logo-fallback" style="display:none;">IFN</span>
+          </div>
+        </div>
+      </div>
+
+      <h1>Inteligencia Financiera y de Negocios</h1>
+      <p>
+        Canal informativo de contacto del equipo IFN. Para consultas generales,
+        soporte de información, análisis financiero, mercados, proyectos e inteligencia de negocios,
+        puedes comunicarte con nuestro buzón central o directamente con el especialista correspondiente.
+      </p>
+
+      <div class="general-contact">
+        <div class="general-icon">✉</div>
+        <div>
+          <small>Consulta general al equipo IFN</small>
+          <a href="mailto:consultasifn@micoope.com.gt">consultasifn@micoope.com.gt</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-title">
+      <h2>Nuestro equipo</h2>
+      <span>Contacto directo por especialidad</span>
+    </div>
+
+    <section class="team-grid">
+      <article class="card">
+        <div class="avatar">AC</div>
+        <div class="info">
+          <h3>Ana Castro</h3>
+          <div class="role">Jefe de Inteligencia Financiera y de Negocios</div>
+          <a class="email" href="mailto:lcastro@micoope.com.gt">✉ lcastro@micoope.com.gt</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="avatar">JR</div>
+        <div class="info">
+          <h3>Jorge Robles</h3>
+          <div class="role">Analista de Datos</div>
+          <a class="email" href="mailto:jrobles@micoope.com.gt">✉ jrobles@micoope.com.gt</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="avatar">AT</div>
+        <div class="info">
+          <h3>Alex Top</h3>
+          <div class="role">Especialista de Mercados y Proyectos</div>
+          <a class="email" href="mailto:atop@micoope.com.gt">✉ atop@micoope.com.gt</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="avatar">AM</div>
+        <div class="info">
+          <h3>Andy Manuel</h3>
+          <div class="role">Especialista de Inteligencia de Negocios</div>
+          <a class="email" href="mailto:ateletor@micoope.com.gt">✉ ateletor@micoope.com.gt</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="avatar">LM</div>
+        <div class="info">
+          <h3>Lester Morales</h3>
+          <div class="role">Especialista de Inteligencia Financiera</div>
+          <a class="email" href="mailto:lmorales@micoope.com.gt">✉ lmorales@micoope.com.gt</a>
+        </div>
+      </article>
+
+      
+    </section>
+
+    <footer class="footer">
+      <strong>IFN · Inteligencia Financiera y de Negocios</strong><br>
+      Septiembre 2026
+    </footer>
+  </main>
+</body>
+</html>
